@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.fragment_animation.view.*
 
 class AnimationActivity : AppCompatActivity() {
 
+    //Activity que se encarga de la animacion
+    
     protected lateinit var calendar: View
     protected lateinit var frameLayout: View
     protected var screenHeight = 10f
@@ -36,9 +38,11 @@ class AnimationActivity : AppCompatActivity() {
         screenHeight = displayMetrics.heightPixels.toFloat()
     }
 
+    //Funcion de la animacion
     private fun onStartAnimation(){
         val valueAnimator = ValueAnimator.ofFloat(100f, -screenHeight)
 
+        //La animacion se desplazara por el eje Y (de abajo hacia arriba)
         valueAnimator.addUpdateListener {
             val value = it.animatedValue as Float
             calendar.translationY = value
@@ -50,6 +54,7 @@ class AnimationActivity : AppCompatActivity() {
         valueAnimator.start()
     }
 
+    //Companion object que indica a la funcion la duracion de la animacion
     companion object {
         val DEFAULT_ANIMATION_DURATION = 1700L
     }
